@@ -1,0 +1,71 @@
+<html ng-app="Myapp"/>
+      <meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página de autenticação</title>
+
+        <!--inserindo o bootstrap no documento html-->
+		<link href="lib/bootstrap.min.css" rel="stylesheet">
+
+        <!-- incluindo o angularjs-->
+        <script src="lib/angular.min.js"></script>
+        <script src="script.js"></script>
+
+
+    </head>
+    <body ng-controller="autenticacao">
+
+    	<!-- inserindo o  jQuery que é requisito do JavaScript do Bootstrap -->
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+		<!-- inserindo o JavaScript do Bootstrap -->
+		<script src="lib/bootstrap.min.js"></script>
+
+		<form class="form-horizontal" ng-submit="enviarDados()">
+
+
+
+		<legend>Autenticação</legend>
+
+		<!-- Login-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="login">Login</label>
+			<div class="col-md-3">
+		  		<input id="login" type="text" placeholder="Digite seu login" class="form-control input-md" ng-model="login">
+		  	</div>
+		</div>
+
+		<!-- Senha-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="senha">Senha</label>
+		  	<div class="col-md-3">
+		    	<input id="senha" type="password" placeholder="Digite sua senha" class="form-control input-md"  ng-model="senha">
+	 	  	</div>
+		</div>
+
+		<!-- Enviar -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="entrar"></label>
+			<div class="col-md-3">
+		    	<input type="submit" id="entrar" class="btn btn-primary"></input>
+		  	</div>
+		</div>
+
+
+		<!-- Alguns testes para ver se o angularJs está funcionando-->
+		<div class="form-group">
+			<label class="col-md-4 control-label">Login digitado: {{login}}</label>
+
+		</div>
+
+		<div class="form-group">
+
+			<label class="col-md-4 control-label">Senha digitada: {{senha}}</label>
+		</div>
+
+
+
+
+
+		</form>
+</body>
+</html>
