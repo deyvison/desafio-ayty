@@ -45,9 +45,9 @@ public class BancoPostgre {
 			
 			if(rs != null)
 				rs.close();
-			System.out.println("Conexão com o banco fechada!");
+			System.out.println("ConexÃ£o com o banco fechada!");
 		} catch (Exception e) {
-			System.out.println("Erro ao fechar conexão com o banco");
+			System.out.println("Erro ao fechar conexÃ£o com o banco");
 		}
 		
 		
@@ -59,13 +59,13 @@ public class BancoPostgre {
 			
 			/** String sql = "SELECT * FROM suaTabela where suaColunaVarchar = ? and suaColunaInt = ? ";             
 				PreparedStatement ps = c.prepareStatement(sql);       
-				//Aqui você seta os valores dos ?     
+				//Aqui vocÃª seta os valores dos ?     
 				ps.setString(1, "string");     
 				ps.setInt(2, 10);     
 				ResultSet rs = ps.executeQuery(); */
 			
 			this.abrirConexao();
-			String consulta = "select * from usuario where login = ? and senha = ?";
+			String consulta = "select * from usuarios where login = ? and senha = ?";
 			pstmt = this.conexao.prepareStatement(consulta);
 			pstmt.setString(1, nome); 
 			pstmt.setString(2, senha); 
@@ -82,17 +82,17 @@ public class BancoPostgre {
 			this.fecharConexao();
 			
 		//	if(nomeRetornado.equals(nome) && senhaRetornada.equals(senha)){
-			//	return "Usuário autenticado!";
+			//	return "UsuÃ¡rio autenticado!";
 			//}
 			
 			if(nomeRetornado != null && senhaRetornada != null)
-				return "Usuário autenticado!";
+				return "UsuÃ¡rio autenticado!";
 			else
-				return "Usuário e/ou senha inválidos";
+				return "UsuÃ¡rio e/ou senha invÃ¡lidos";
 			
 		} catch (Exception e) {
 			this.fecharConexao();
-			return "Erro ao validar usuário: "+e.getMessage();
+			return "Erro ao validar usuÃ¡rio: "+e.getMessage();
 		}
 	}
 
@@ -122,7 +122,7 @@ public class BancoPostgre {
 			if(retorno > 0){
 				return "Beneficiario cadastrado com sucesso!";
 			}
-			return "Erro ao cadastrar beneficiario"; // adicionar chave primária e mudar mensagem para : beneficiário já existente
+			return "Erro ao cadastrar beneficiario"; // adicionar chave primÃ¡ria e mudar mensagem para : beneficiï¿½rio jï¿½ existente
 			
 		} catch (Exception e) {
 			this.fecharConexao();
