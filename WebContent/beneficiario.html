@@ -7,7 +7,9 @@
 	
 	<!-- incluindo o angularjs-->
     <script src="lib/angular.min.js"></script>
-
+	
+	<script src="beneficiario.js"></script>
+	
 <meta charset="UTF-8">
 <title>Gerenciamento de beneficiário</title>
 </head>
@@ -20,16 +22,18 @@
 	<script src="lib/bootstrap.min.js"></script>
 	
 	<h1>Pagina de crud dos beneficiarios</h1>
-	<label>Selecione a opção: </label>
-	<select>
-		<option value="cadastrar">Cadastrar Beneficiário</option>
-		<option value="pesquisar">Pesquisar Beneficiário</option>
-		<option value="atualizar">Atualizar Beneficiário</option>
-		<option value="remover">Remover Beneficiário</option>
-	</select>
-	<button>OK</button>
-	</br>
-	<a href="index.html"><input type="submit" id="sair"
-		class="btn btn-primary" value="Sair"></input></a>
+	<div>
+		<label>Selecione a opção: </label>
+		<select id="opcoes">
+			<option value="cadastrar">Cadastrar Beneficiário</option>
+			<option value="pesquisar">Consultar Beneficiário</option>
+			<option value="atualizar">Atualizar Beneficiário</option>
+			<option value="remover">Remover Beneficiário</option>
+		</select>
+		<button onclick="obterCampoSelecionado()">OK</button>
+		</br>
+		<a href="index.html"><input type="submit" id="sair"
+			class="btn btn-primary" value="Sair"></input></a>
+	</div>
 </body>
 </html>

@@ -12,7 +12,7 @@ app.controller('autenticacao',function ($scope, $http){
 		response.success(function(data){
 			
 			if(data === "Usuário autenticado!"){
-				alert("Entrouuuuuuuuu");
+				alert(data);
 				window.open("beneficiario.html","_self");
 			}else{
 				alert("Usuário inválido!");
