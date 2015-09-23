@@ -1,25 +1,22 @@
-var app = angular.module("Myapp", []);
+var app = angular.module('myApp', []);
 
-app.controller('autenticacao',function ($scope, $http){
+app.controller('controle_cadastro',function ($scope, $http){
 
-	$scope.enviarDados = function(){
+	$scope.cadastrarBeneficiario = function(){
 
+		var jsonObj = {nome: $scope.nome, estado_civil: $scope.estado_civil, data_de_nasc: $scope.data_de_nasc, 
+				nacionalidade: $scope.nacionalidade, estado_nasc: $scope.estado_nasc, cidade_nasc: $scope.cidade_nasc, sexo: $scope.sexo,
+				cpf: $scope.cpf, rg: $scope.rg};
 		
-		var jsonObj = {login: $scope.login, senha : $scope.senha};
-		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/consultarlogin", jsonObj);
-		console.log(jsonObj.login);
-		console.log(jsonObj.senha);
+		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/cadastrarbeneficiario", jsonObj);
+		
 		response.success(function(data){
 			
-			if(data === "Usuário autenticado!"){
-				alert(data);
-				window.open("beneficiario.html","_self");
-			}else{
-				alert("Usuário inválido!");
-			}
+			window.alert(data)
 		});
+		
 		response.error(function(data) {
-  		alert(data);
+			alert(data);
 		});
 	}
 });

@@ -16,5 +16,13 @@ public class GerenciarBD {
 	public String cadastrarBeneficiario(String nome,String estado_civil,String data_de_nascimento,String nacionalidade,String estado_nasc,String cidade_nasc,String sexo,String cpf,String rg){
 		return this.banco.cadastrarBeneficiario(nome, estado_civil, data_de_nascimento, nacionalidade, estado_nasc, cidade_nasc, sexo, cpf, rg);
 	}
+
+	public String consultarBeneficiario(String cpf) {
+		return this.banco.consultarBeneficiario(cpf);
+	}
+
+	public String removerBeneficiario(String cpf) {
+		return this.banco.removerBeneficiario(cpf);
+	}
 }
 

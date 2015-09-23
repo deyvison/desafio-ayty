@@ -1,25 +1,21 @@
-var app = angular.module("Myapp", []);
+var app = angular.module('myapp', []);
 
-app.controller('autenticacao',function ($scope, $http){
+app.controller('controle_consulta',function ($scope, $http){
 
-	$scope.enviarDados = function(){
+	$scope.pesquisarBeneficiario = function(){
 
 		
-		var jsonObj = {login: $scope.login, senha : $scope.senha};
-		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/consultarlogin", jsonObj);
-		console.log(jsonObj.login);
-		console.log(jsonObj.senha);
+		var jsonObj = {pesquisa: $scope.pesquisa};
+		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/consultarbeneficiario", jsonObj);
+		console.log("sim vamos");
 		response.success(function(data){
 			
-			if(data === "Usuário autenticado!"){
-				alert(data);
-				window.open("beneficiario.html","_self");
-			}else{
-				alert("Usuário inválido!");
-			}
+			window.alert(data)
+			$scope.pesquisa = "";
 		});
 		response.error(function(data) {
-  		alert(data);
+			window.alert(data);
+			$scope.pesquisa = "";
 		});
 	}
 });

@@ -1,25 +1,21 @@
-var app = angular.module("Myapp", []);
+var app = angular.module("myApp", []);
 
-app.controller('autenticacao',function ($scope, $http){
+app.controller('controle_remover',function ($scope, $http){
 
-	$scope.enviarDados = function(){
+	$scope.removerBeneficiario = function(){
 
 		
-		var jsonObj = {login: $scope.login, senha : $scope.senha};
-		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/consultarlogin", jsonObj);
-		console.log(jsonObj.login);
-		console.log(jsonObj.senha);
+		var jsonObj = {cpf: $scope.cpfRemover };
+		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/removerbeneficiario", jsonObj);
+		
 		response.success(function(data){
 			
-			if(data === "Usuário autenticado!"){
-				alert(data);
-				window.open("beneficiario.html","_self");
-			}else{
-				alert("Usuário inválido!");
-			}
+			window.alert(data);
+			$scope.cpfRemover = "";
 		});
 		response.error(function(data) {
-  		alert(data);
+			window.alert(data);
+			$scope.cpfRemover = "";
 		});
 	}
 });

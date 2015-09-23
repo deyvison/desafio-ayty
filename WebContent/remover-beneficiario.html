@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
 	
@@ -8,10 +8,11 @@
 	
 	<!-- incluindo o angularjs-->
     <script src="lib/angular.min.js"></script>
+    <script src="remover-beneficiario.js"></script>
 
 <title>Remoção de Beneficiario</title>
 </head>
-<body>
+<body ng-controller="controle_remover">
 	
 	<!-- inserindo o  jQuery que é requisito do JavaScript do Bootstrap -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -19,7 +20,25 @@
 	<!-- inserindo o JavaScript do Bootstrap -->
 	<script src="lib/bootstrap.min.js"></script>
 	
-	<h1>Remover beneficiário</h1>
+	
+	<form class="form-horizontal" ng-submit="removerBeneficiario()">
+		<legend>Remover Beneficiario</legend>
+		
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="cpf">Digite o cpf: </label>
+			<div class="col-md-3">
+				<input id="cpf" type="text" placeholder="Cpf beneficiario" class="form-control input-md" ng-model="cpfRemover">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="remover"></label>
+			<div class="col-md-3">
+		    	<input type="submit" id="remover" class="btn btn-primary" value="Remover"></input>
+		  	</div>
+		</div>
+		
+	</form>
 	
 </body>
 </html>

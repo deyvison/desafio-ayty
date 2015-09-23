@@ -17,9 +17,13 @@ app.controller('autenticacao',function ($scope, $http){
 			}else{
 				alert("Usuário inválido!");
 			}
+			$scope.login = "";
+			$scope.senha = "";
 		});
 		response.error(function(data) {
-  		alert(data);
+			$scope.login = "";
+			$scope.senha = "";
+			alert(data);
 		});
 	}
 });

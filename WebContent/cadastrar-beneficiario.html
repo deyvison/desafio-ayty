@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
 	
@@ -8,10 +8,11 @@
 	
 	<!-- incluindo o angularjs-->
     <script src="lib/angular.min.js"></script>
-
+	<script src="cadastrar-beneficiario.js"></script>
 <title>Cadastro de beneficiário</title>
 </head>
-<body>
+
+<body ng-controller="controle_cadastro">
 	
 	<!-- inserindo o  jQuery que é requisito do JavaScript do Bootstrap -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -19,7 +20,93 @@
 	<!-- inserindo o JavaScript do Bootstrap -->
 	<script src="lib/bootstrap.min.js"></script>
 	
-	<h1>Cadastrar beneficiário</h1>
+	<form class="form-horizontal" ng-submit="cadastrarBeneficiario()">
+		<legend>Cadastrar Beneficiário</legend>
+		
+		<!-- Nome -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="nome">Nome: </label>
+			<div class="col-md-3">
+				<input id="nome" type="text" placeholder="Nome completo" class="form-control input-md" ng-model="nome">
+			</div>
+		</div>
+		
+		<!-- Estado Civil -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="estado_civil">Estado Civil: </label>
+			<div class="col-md-3">
+				<input id="estado_civil" type="text" placeholder="Estado civil" class="form-control input-md" ng-model="estado_civil">
+			</div>
+		</div>
+		
+		<!-- Data nascimento -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="data_de_nasc">Data de nascimento: </label>
+			<div class="col-md-3">
+				<input id="data_de_nasc" type="text" placeholder="Data de nascimento" class="form-control input-md" ng-model="data_de_nasc">
+			</div>
+		</div>
+		
+		<!-- Nacionalidade -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="nacionalidade">Nacionalidade: </label>
+			<div class="col-md-3">
+				<input id="nacionalidade" type="text" placeholder="Nacionalidade" class="form-control input-md" ng-model="nacionalidade">
+			</div>
+		</div>
+		
+		<!-- Estado que nasceu -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="estado_nasc">Estado de Nascimento: </label>
+			<div class="col-md-3">
+				<input id="estado_nasc" type="text" placeholder="Estado de nascimento" class="form-control input-md" ng-model="estado_nasc">
+			</div>
+		</div>
+		
+		<!-- Cidade que nasceu -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="cidade_nasc">Cidade de nascimento: </label>
+			<div class="col-md-3">
+				<input id="cidade_nasc" type="text" placeholder="Cidade de nascimento" class="form-control input-md" ng-model="cidade_nasc">
+			</div>
+		</div>
+		
+		<!-- Sexo -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="sexo">Sexo: </label>
+			<div class="col-md-3">
+				<input id="sexo" type="text" placeholder="Sexo" class="form-control input-md" ng-model="sexo">
+			</div>
+		</div>
+		
+		<!-- Cpf -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="cpf">Cpf: </label>
+			<div class="col-md-3">
+				<input id="cpf" type="text" placeholder="CPF" class="form-control input-md" ng-model="cpf">
+			</div>
+		</div>
+		
+		<!-- RG -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="rg">Rg: </label>
+			<div class="col-md-3">
+				<input id="rg" type="text" placeholder="RG" class="form-control input-md" ng-model="rg">
+			</div>
+		</div>
+		
+		<!-- Enviar -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="entrar"></label>
+			<div class="col-md-3">
+		    	<input type="submit" id="entrar" class="btn btn-primary" value="Cadastrar"></input>
+		  	</div>
+		</div>
+	
+	</form>
+	
+	
+	
 	
 </body>
 </html>

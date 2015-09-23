@@ -64,7 +64,7 @@ public class ServicoREST {
 			
 			nome = jsonobj.getString("nome");
 			estado_civil = jsonobj.getString("estado_civil");
-			data_de_nascimento = jsonobj.getString("data_de_nascimento");
+			data_de_nascimento = jsonobj.getString("data_de_nasc");
 			nacionalidade = jsonobj.getString("nacionalidade");
 			estado_nasc = jsonobj.getString("estado_nasc");
 			cidade_nasc = jsonobj.getString("cidade_nasc");
@@ -80,4 +80,37 @@ public class ServicoREST {
 		
 	}
 	
+	
+	@POST
+	@Path("/consultarbeneficiario")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String consultarBeneficiario(String dados){
+		try {
+			JSONObject jsonobj = new JSONObject(dados);
+			String cpf = jsonobj.getString("pesquisa");
+			return this.gerenciador.consultarBeneficiario(cpf);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "";
+		}
+		
+	}
+	
+	@POST
+	@Path("/removerbeneficiario")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String removerBeneficiario(String dados){
+		try {
+			JSONObject jsonobj = new JSONObject(dados);
+			String cpf = jsonobj.getString("cpf");
+			return this.gerenciador.removerBeneficiario(cpf);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "";
+	}
 }

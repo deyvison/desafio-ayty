@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myapp">
 <head>
 	<meta charset="UTF-8">
 	
@@ -8,10 +8,10 @@
 	
 	<!-- incluindo o angularjs-->
     <script src="lib/angular.min.js"></script>
-
+	<script src="consultar-beneficiario.js"></script>
 <title>Consulta de Beneficiario</title>
 </head>
-<body>
+<body ng-controller="controle_consulta">
 	
 	<!-- inserindo o  jQuery que é requisito do JavaScript do Bootstrap -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -19,7 +19,28 @@
 	<!-- inserindo o JavaScript do Bootstrap -->
 	<script src="lib/bootstrap.min.js"></script>
 	
-	<h1>Consultar beneficiário</h1>
+	
+	
+	<form ng-submit="pesquisarBeneficiario()" class="form-horizontal">
+		<legend>Cadastrar Beneficiário</legend>
+		<!-- Campo pesquisa -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="pesquisa">Digite o cpf para pesquisar: </label>
+			<div class="col-md-3">
+				<input id="pesquisa" type="text" placeholder="Cpf beneficiario" class="form-control input-md" ng-model="pesquisa">
+			</div>
+		</div>
+		
+		
+		<!-- Enviar -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="pesquisar"></label>
+			<div class="col-md-3">
+		    	<input type="submit" id="pesquisar" class="btn btn-primary" value="Pesquisar"></input>
+		  	</div>
+		</div>
+		
+	</form>
 	
 </body>
 </html>
