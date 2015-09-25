@@ -15,7 +15,7 @@ app.controller('autenticacao',function ($scope, $http){
 				alert(data);
 				window.open("beneficiario.html","_self");
 			}else{
-				alert("Usuário inválido!");
+				alert(data);
 			}
 			$scope.login = "";
 			$scope.senha = "";
