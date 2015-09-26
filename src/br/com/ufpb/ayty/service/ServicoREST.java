@@ -10,7 +10,9 @@ import javax.ws.rs.core.MediaType;
 import org.json.JSONObject;
 
 import br.com.ufpb.ayty.GerenciarBD;
+import br.com.ufpb.ayty.controllers.BeneficiarioController;
 import br.com.ufpb.ayty.controllers.UsuarioController;
+import br.com.ufpb.ayty.entity.Beneficiario;
  
 @Path("/app")
 public class ServicoREST {
@@ -79,8 +81,13 @@ public class ServicoREST {
 			cpf = jsonobj.getString("cpf");
 			rg = jsonobj.getString("rg");
 			
-			return gerenciador.cadastrarBeneficiario(nome, estado_civil, data_de_nascimento, nacionalidade, estado_nasc, cidade_nasc, sexo, cpf, rg);
-
+			
+			
+			BeneficiarioController.getInstance().cadastrarBeneficiario(new Beneficiario(nome, estado_civil, data_de_nascimento, 
+					nacionalidade, estado_nasc, cidade_nasc, sexo, cpf, rg));
+			
+			return "Beneficiario cadastrado com sucesso!";
+			
 		} catch (Exception e) {
 			return "Erro ao tentar cadastrar beneficiario: "+ e.getMessage();
 		}

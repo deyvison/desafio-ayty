@@ -4,6 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.ufpb.ayty.dao.UsuarioJpaController;
+import br.com.ufpb.ayty.entity.Usuario;
 import br.com.ufpb.ayty.exception.UsuarioInexistenteException;
 
 public class UsuarioController {
@@ -25,19 +26,19 @@ public class UsuarioController {
 		return singleton;
 	}
 	
-	/*
+	
 	public void cadastrarUsuario(Usuario usuario) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(this.unidadeDeArmazenamento);
 		UsuarioJpaController ujc = new UsuarioJpaController(emf);
 
 		try {
-			ujc.create(usuario);
+			ujc.createUsuario(usuario);
 
 		} finally {
 			emf.close();
 		}
 
-	}*/
+	}
 	
 	public boolean validarUsuario(String login, String senha) throws UsuarioInexistenteException {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory(this.unidadeDeArmazenamento);

@@ -11,7 +11,8 @@
 	   <provider>org.hibernate.ejb.HibernatePersistence</provider>
 	
 	   <!-- Mapeamento das entidades -->
-	   <class>org.ayty.pbprev.entidades.Usuario</class> 
+	   <class>org.ayty.pbprev.entidades.Usuario</class>
+	   <class>org.ayty.pbprev.entidades.Beneficiario</class> 
 	
 	   <properties>
 		  <!-- dados da conexão -->
