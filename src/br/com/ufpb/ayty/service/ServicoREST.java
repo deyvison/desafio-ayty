@@ -1,5 +1,7 @@
 package br.com.ufpb.ayty.service;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -139,4 +141,16 @@ public class ServicoREST {
 		}
 		
 	}
+	
+	@GET
+	@Path("/listarTodosBeneficiarios")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String listarTodosBeneficiarios(){
+		
+		List <Beneficiario> retorno = BeneficiarioController.getInstance().listarTodosBeneficiarios();
+		Gson g = new Gson();
+		System.out.println(g.toJson(retorno));
+		return g.toJson(retorno);
+	}
+	
 }

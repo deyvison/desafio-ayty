@@ -1,9 +1,14 @@
 package br.com.ufpb.ayty.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 import br.com.ufpb.ayty.entity.Beneficiario;
 import br.com.ufpb.ayty.entity.Usuario;
@@ -186,5 +191,23 @@ public class UsuarioJpaController {
 				em.close();
 			}
 		}
+	}
+
+	public List<Beneficiario> listAll() {
+		EntityManager em = null;
+		
+		try {
+			em = getEntityManager();
+			Query query = em.createQuery("from Beneficiario"); // nome da entidade, não da tabela
+			List <Beneficiario> beneficiarios = query.getResultList();
+			return beneficiarios;
+			
+		} catch (Exception e) {
+			return null;
+			
+		}
+		
+		// TODO Auto-generated method stub
+		
 	}
 }

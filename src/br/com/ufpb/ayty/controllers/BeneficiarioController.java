@@ -1,5 +1,7 @@
 package br.com.ufpb.ayty.controllers;
 
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -56,5 +58,13 @@ public class BeneficiarioController {
 		
 		b = ujc.removerBeneficiario(cpf);
 		return b;
+	}
+
+	public List<Beneficiario> listarTodosBeneficiarios() {
+		// TODO Auto-generated method stub
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(this.unidadeDeArmazenamento);
+		UsuarioJpaController ujc = new UsuarioJpaController(emf);
+		
+		return ujc.listAll();
 	}
 }
