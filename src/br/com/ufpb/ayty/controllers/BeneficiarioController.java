@@ -5,6 +5,7 @@ import javax.persistence.Persistence;
 
 import br.com.ufpb.ayty.dao.UsuarioJpaController;
 import br.com.ufpb.ayty.entity.Beneficiario;
+import br.com.ufpb.ayty.exception.BeneficiarioInexistenteException;
 
 public class BeneficiarioController {
 
@@ -33,5 +34,27 @@ public class BeneficiarioController {
 		} finally {
 			emf.close();
 		}
+	}
+	
+	public Beneficiario pesquisarBeneficiario(String cpf) throws BeneficiarioInexistenteException{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(this.unidadeDeArmazenamento);
+		UsuarioJpaController ujc = new UsuarioJpaController(emf);
+		
+		Beneficiario b = null;
+		
+		b = ujc.pesquisarBeneficiario(cpf);
+		return b;
+		
+		
+	}
+	
+	public Beneficiario removerBeneficiario(String cpf){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(this.unidadeDeArmazenamento);
+		UsuarioJpaController ujc = new UsuarioJpaController(emf);
+		
+		Beneficiario b = null;
+		
+		b = ujc.removerBeneficiario(cpf);
+		return b;
 	}
 }

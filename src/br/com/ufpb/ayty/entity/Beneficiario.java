@@ -28,7 +28,10 @@ public class Beneficiario {
 		this.rg = rg;
 	}
 
-
+	public Beneficiario(){
+		
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -116,6 +119,13 @@ public class Beneficiario {
 
 	public void setRg(String rg) {
 		this.rg = rg;
+	}
+
+	@Override
+	public String toString() {
+		return "Beneficiario [cpf=" + cpf + ", nome=" + nome + ", estado_civil=" + estado_civil + ", data_nascimento="
+				+ data_nascimento + ", nacionalidade=" + nacionalidade + ", estado_nascimento=" + estado_nascimento
+				+ ", cidade_nascimento=" + cidade_nascimento + ", sexo=" + sexo + ", rg=" + rg + "]";
 	}
 	
 	

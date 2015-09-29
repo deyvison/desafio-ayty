@@ -9,6 +9,8 @@ import javax.ws.rs.core.MediaType;
 
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+
 import br.com.ufpb.ayty.GerenciarBD;
 import br.com.ufpb.ayty.controllers.BeneficiarioController;
 import br.com.ufpb.ayty.controllers.UsuarioController;
@@ -68,6 +70,7 @@ public class ServicoREST {
 	public String cadastrarBeneficiario(String dados){
 		
 		try {
+			System.out.println("valor da chegada: "+dados);
 			JSONObject jsonobj = new JSONObject(dados);
 			String nome, estado_civil,data_de_nascimento,nacionalidade,estado_nasc,cidade_nasc,sexo,cpf,rg;
 			
@@ -98,17 +101,20 @@ public class ServicoREST {
 	@POST
 	@Path("/consultarbeneficiario")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String consultarBeneficiario(String dados){
+		
 		try {
 			JSONObject jsonobj = new JSONObject(dados);
 			String cpf = jsonobj.getString("pesquisa");
-			return this.gerenciador.consultarBeneficiario(cpf);
 			
+			Beneficiario retorno = BeneficiarioController.getInstance().pesquisarBeneficiario(cpf);
+			
+			return new Gson().toJson(retorno); // converte o objeto para um jsonobj e retorna
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "";
+			return "Erro na requisição de cadastro de beneficiario";
 		}
 		
 	}
@@ -121,10 +127,16 @@ public class ServicoREST {
 		try {
 			JSONObject jsonobj = new JSONObject(dados);
 			String cpf = jsonobj.getString("cpf");
-			return this.gerenciador.removerBeneficiario(cpf);
+			
+			Beneficiario retorno = BeneficiarioController.getInstance().removerBeneficiario(cpf);
+			if(retorno != null){
+				return "Removido: "+retorno.toString();
+			}
+			
+			return "Beneficiario não cadastrado!";
 		} catch (Exception e) {
-			// TODO: handle exception
+			return "Erro na requisição de remoção de beneficiario";
 		}
-		return "";
+		
 	}
 }

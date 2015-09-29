@@ -13,10 +13,19 @@ app.controller('controle_cadastro',function ($scope, $http){
 		response.success(function(data){
 			
 			window.alert(data)
+			$scope.nome = "";
+			$scope.estado_civil = "";
+			$scope.data_de_nasc = "";
+			$scope.nacionalidade = "";
+			$scope.estado_nasc = "";
+			$scope.cidade_nasc = "";
+			$scope.sexo = "";
+			$scope.cpf = "";
+			$scope.rg = "";
 		});
 		
 		response.error(function(data) {
-			alert(data);
+			window.alert(data);
 		});
 	}
 });

@@ -18,29 +18,67 @@
 	
 	<!-- inserindo o JavaScript do Bootstrap -->
 	<script src="lib/bootstrap.min.js"></script>
-	
-	
-	
+
+
+
 	<form ng-submit="pesquisarBeneficiario()" class="form-horizontal">
-		<legend>Cadastrar Beneficiário</legend>
+		<legend>Consultar Beneficiário</legend>
 		<!-- Campo pesquisa -->
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="pesquisa">Digite o cpf para pesquisar: </label>
+			<label class="col-md-4 control-label" for="pesquisa">Digite o
+				cpf para pesquisar: </label>
 			<div class="col-md-3">
-				<input id="pesquisa" type="text" placeholder="Cpf beneficiario" class="form-control input-md" ng-model="pesquisa">
+				<input id="pesquisa" type="text" placeholder="Cpf beneficiario"
+					class="form-control input-md" ng-model="pesquisa">
 			</div>
 		</div>
-		
-		
+
+
 		<!-- Enviar -->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="pesquisar"></label>
 			<div class="col-md-3">
-		    	<input type="submit" id="pesquisar" class="btn btn-primary" value="Pesquisar"></input>
-		  	</div>
+				<input type="submit" id="pesquisar" class="btn btn-primary"
+					value="Pesquisar"></input>
+			</div>
 		</div>
-		
+
 	</form>
-	
+	<div>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Estado Civil</th>
+					<th>Data de nascimento</th>
+					<th>Nacionalidade</th>
+					<th>Estado de nascimento</th>
+					<th>Cidade de nascimento</th>
+					<th>Sexo</th>
+					<th>Cpf</th>
+					<th>Rg</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="r in retorno">
+					<td ><strong>{{ r.nome }}</strong></td>
+					<td> {{ r.estado_civil }}</td>
+					<td> {{ r.data_nascimento }}</td>
+					<td> {{ r.nacionalidade }}</td>
+					<td> {{ r.estado_nascimento }}</td>
+					<td> {{ r.cidade_nascimento }}</td>
+					<td> {{ r.sexo }}</td>
+					<td> {{ r.cpf }}</td>
+					<td> {{ r.rg }}</td>
+					<td>
+						<button type="button" ng-click="removeLinha(r)" class="btn btn-sm btn-danger" ng-value="X">
+						<i class="glyphicon-class">X</i>
+				</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
