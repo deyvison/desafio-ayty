@@ -31,6 +31,10 @@
 				<input id="pesquisa" type="text" placeholder="Cpf beneficiario"
 					class="form-control input-md" ng-model="pesquisa">
 			</div>
+			<div>
+				<input type="submit" id="pesquisar" class="btn btn-primary"
+					value="Pesquisar"></input>
+			</div>
 		</div>
 
 
@@ -38,16 +42,15 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="pesquisar"></label>
 			<div class="col-md-3">
-				<input type="submit" id="pesquisar" class="btn btn-primary"
-					value="Pesquisar"></input>
+				<center>
+					<input type="button" id="listarTodos" class="btn btn-primary"
+						value="Listar Todos" ng-click="listarTodos()"></input>
 					
-				<input type="button" id="listarTodos" class="btn btn-primary"
-					value="ListarTodos" ng-click="listarTodos()"></input>
+					<a href="cadastrar-beneficiario.html"><input type="button" id="novoBeneficiario" class="btn btn-primary"value="Novo Beneficiario"></input></a>
+				</center>
 			</div>
 		</div>
 		
-		
-
 	</form>
 	<div>
 		<table class="table table-striped table-bordered">
@@ -79,8 +82,11 @@
 					<td>
 						<button type="button" ng-click="removeLinha(r)" class="btn btn-sm btn-danger" ng-value="x">
 						<i class="glyphicon-class">X</i>
-				</button>
+						</button>
 					</td>
+					<td><button type="button" class="btn btn-warning">Editar</button></td>
+					<td><button type="button" ng-click="excluirBeneficiarioPorLinha(r)" class="btn btn-danger">Excluir</button></td>
+					
 				</tr>
 			</tbody>
 		</table>
