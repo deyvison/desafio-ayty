@@ -69,7 +69,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="r in retorno">
+				<tr ng-repeat="r in retorno | orderBy:'nome'">
 					<td ><strong>{{ r.nome }}</strong></td>
 					<td> {{ r.estado_civil }}</td>
 					<td> {{ r.data_nascimento }}</td>

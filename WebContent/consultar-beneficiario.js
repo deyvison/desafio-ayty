@@ -60,24 +60,26 @@ app.controller('controle_consulta',function ($scope, $http){
 	
 	$scope.excluirBeneficiarioPorLinha = function (linha){
 		
-		var index = $scope.retorno.indexOf(linha);
-		var cpfRemover = $scope.retorno[index].cpf;
-		
-		var jsonObj = {cpf: cpfRemover};
-		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/removerbeneficiario", jsonObj);
-		
-		response.success(function(data){
+		if(window.confirm("Deseja deletar permanentemente do sistema?")){
 			
-			window.alert(data);
-			$scope.cpfRemover = "";
-			$scope.retorno.splice(index, 1);
-		});
-		response.error(function(data) {
-			window.alert(data);
-			$scope.cpfRemover = "";
+			var index = $scope.retorno.indexOf(linha);
+			var cpfRemover = $scope.retorno[index].cpf;
 			
-		});
+			var jsonObj = {cpf: cpfRemover};
+			var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/removerbeneficiario", jsonObj);
+			
+			response.success(function(data){
+				
+				window.alert(data);
+				$scope.cpfRemover = "";
+				$scope.retorno.splice(index, 1);
+			});
+			response.error(function(data) {
+				window.alert(data);
+				$scope.cpfRemover = "";
+				
+			});
 		
-		
+		}
 	}
 });
