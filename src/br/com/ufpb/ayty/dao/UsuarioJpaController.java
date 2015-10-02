@@ -210,4 +210,38 @@ public class UsuarioJpaController {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Beneficiario update(Beneficiario b) {
+	//	Produto produto = entityManager.find(Produto.class, 1L);
+	//	produto.setNome("Transações !!");
+		 
+	//	entityManager.getTransaction().begin();
+	//	entityManager.getTransaction().commit();
+		
+		
+		EntityManager em = null;
+		
+		try {
+			em = getEntityManager();
+			Beneficiario bene = em.find(Beneficiario.class, b.getCpf());
+			
+			bene.setNome(b.getNome());
+			bene.setEstado_civil(b.getEstado_civil());
+			bene.setData_nascimento(b.getData_nascimento());
+			bene.setNacionalidade(b.getNacionalidade());
+			bene.setEstado_nascimento(b.getEstado_nascimento());
+			bene.setCidade_nascimento(b.getCidade_nascimento());
+			bene.setSexo(b.getSexo());
+			bene.setRg(b.getRg());
+			// cpf não precisa setar pq é primary key e não é possível edita-lo no formulário
+			
+			em.getTransaction().begin();
+			em.getTransaction().commit();
+			
+			return bene;
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

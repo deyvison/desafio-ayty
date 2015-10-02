@@ -2,7 +2,7 @@ var app = angular.module('myapp', []);
 
 app.controller('controle_consulta',function ($scope, $http){
 
-	
+	$scope.mostrar = false;
 	
 	$scope.retorno = [];
 	
@@ -82,4 +82,47 @@ app.controller('controle_consulta',function ($scope, $http){
 		
 		}
 	}
+	
+	$scope.mostrarCampoEditar = function(linha){
+		$scope.mostrar = true;
+		
+		$scope.nomeEditar = linha.nome;
+		$scope.estadoCivilEditar = linha.estado_civil;
+		$scope.dataNascimentoEditar = linha.data_nascimento;
+		$scope.nacionalidadeEditar = linha.nacionalidade;
+		$scope.estadoNascimentoEditar = linha.estado_nascimento;
+		$scope.cidadeNascimentoEditar = linha.cidade_nascimento;
+		$scope.sexoEditar = linha.sexo;
+		$scope.cpfEditar = linha.cpf;
+		$scope.rgEditar = linha.rg;
+		
+	}
+	
+	$scope.alterarUsuario = function(){
+		
+		
+		var jsonObj = {nome: $scope.nomeEditar, estado_civil: $scope.estadoCivilEditar, data_nascimento: $scope.dataNascimentoEditar, 
+				nacionalidade: $scope.nacionalidadeEditar, estado_nascimento: $scope.estadoNascimentoEditar, 
+				cidade_nascimento: $scope.cidadeNascimentoEditar, sexo: $scope.sexoEditar, cpf: $scope.cpfEditar, rg: $scope.rgEditar};
+		
+		var response = $http.post("http://localhost:8080/desafio-ayty/rest/app/alterarBeneficiario", jsonObj);
+		
+		response.success(function(data){
+			
+			window.alert(data);
+			$scope.listarTodos();
+			$scope.mostrar = false;
+		});
+		response.error(function(data) {
+			window.alert(data);
+			$scope.mostrar = false;
+		});
+	}
+	
+	$scope.esconderCampoEditar = function (){
+		$scope.mostrar = false;
+	}
+	
+	
+	
 });

@@ -52,6 +52,63 @@
 		</div>
 		
 	</form>
+	
+	<div ng-show="mostrar">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Estado Civil</th>
+					<th>Data de nascimento</th>
+					<th>Nacionalidade</th>
+					<th>Estado de nascimento</th>
+					<th>Cidade de nascimento</th>
+					<th>Sexo</th>
+					<th>Cpf</th>
+					<th>Rg</th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				
+				<tr>
+					<td><input id="nomeEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="nomeEditar"></td>
+					
+					<td> <input id="estadoCivilEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="estadoCivilEditar"></td>
+					
+					<td> <input id="dataNascimentoEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="dataNascimentoEditar"></td>
+					
+					<td><input id="nacionalidadeEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="nacionalidadeEditar"> </td>
+					
+					<td><input id="estadoNascimentoEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="estadoNascimentoEditar"> </td>
+					
+					<td> <input id="cidadeNascimentoEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="cidadeNascimentoEditar"></td>
+					
+					<td><input id="sexoEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="sexoEditar"> </td>
+					
+					<td> <input id="cpfEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="cpfEditar" ng-disabled="true"></td>
+					
+					<td><input id="rgEditar" type="text" placeholder=""
+					class="form-control input-md" ng-model="rgEditar" ng-disabled="true"></td>
+					
+					<td><button type="button" ng-click="alterarUsuario()" class="btn btn-success">Salvar</button></td>
+					
+					<td><button type="button" ng-click="esconderCampoEditar()" class="btn btn-info">Cancelar</button></td>
+					
+				</tr>
+			
+			</tbody>
+		</table>
+	</div>
+	
 	<div>
 		<table class="table table-striped table-bordered">
 			<thead>
@@ -84,7 +141,7 @@
 						<i class="glyphicon-class">X</i>
 						</button>
 					</td>
-					<td><button type="button" class="btn btn-warning">Editar</button></td>
+					<td><button type="button" ng-click="mostrarCampoEditar(r)" class="btn btn-warning">Editar</button></td>
 					<td><button type="button" ng-click="excluirBeneficiarioPorLinha(r)" class="btn btn-danger">Excluir</button></td>
 					
 				</tr>

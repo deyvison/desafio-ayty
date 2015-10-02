@@ -67,4 +67,13 @@ public class BeneficiarioController {
 		
 		return ujc.listAll();
 	}
+
+	public Beneficiario alterarBeneficiario(Beneficiario b) {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory(this.unidadeDeArmazenamento);
+		UsuarioJpaController ujc = new UsuarioJpaController(emf);
+		
+		return ujc.update(b);
+		
+	}
 }

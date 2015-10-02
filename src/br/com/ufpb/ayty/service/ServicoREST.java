@@ -149,8 +149,26 @@ public class ServicoREST {
 		
 		List <Beneficiario> retorno = BeneficiarioController.getInstance().listarTodosBeneficiarios();
 		Gson g = new Gson();
-		System.out.println(g.toJson(retorno));
 		return g.toJson(retorno);
 	}
+	
+	@POST
+	@Path("/alterarBeneficiario")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String alterarBeneficiario(String dados){
+		
+		try {
+			
+			Gson gson = new Gson();
+			Beneficiario b = gson.fromJson(dados, Beneficiario.class);
+			
+			Beneficiario retorno = BeneficiarioController.getInstance().alterarBeneficiario(b);
+			return "Alteração: "+ retorno.toString();
+		} catch (Exception e) {
+			return "Erro ao tentar alterar beneficiario!";
+		}
+		
+	}
+	
 	
 }
